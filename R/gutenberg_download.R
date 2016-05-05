@@ -213,10 +213,12 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   print(links)
   xml2::write_xml(links, "links")
   cat(readLines("links")[1:50], sep = "\n")
-  mirror_full_url <- links %>%
-    rvest::html_nodes("a") %>%
-    .[[1]] %>%
-    rvest::html_attr("href")
+  a <- links %>% rvest::html_nodes("a")
+  print(a)
+  a <- a[[1]]
+  print(a)
+  a <- rvest::html_attr(a, "href")
+  print(a)
   print(mirror_full_url)
 
   # parse and leave out the path
