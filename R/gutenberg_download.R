@@ -213,7 +213,7 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   print(links)
   xml2::write_xml(links, "links")
   cat(readLines("links")[1:50], sep = "\n")
-  a <- links %>% rvest::html_nodes("a")
+  a <- rvest::html_nodes(links, "a")
   print(a)
   a <- a[[1]]
   print(a)
