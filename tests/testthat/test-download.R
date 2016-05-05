@@ -7,6 +7,7 @@ suppressPackageStartupMessages(library(dplyr))
 test_that("gutenberg_get_mirror works", {
   m <- gutenberg_get_mirror()
 
+  stop()
   expect_is(m, "character")
 
   # expect we can get something from it
