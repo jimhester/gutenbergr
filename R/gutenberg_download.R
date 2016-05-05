@@ -210,11 +210,12 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   }
   wget_url <- "http://www.gutenberg.org/robot/harvest?filetypes[]=txt"
   links <- xml2::read_xml(wget_url, as_html = TRUE)
-  str(links)
+  print(links)
   mirror_full_url <- links %>%
     rvest::html_nodes("a") %>%
     .[[1]] %>%
     rvest::html_attr("href")
+  print(mirror_full_url)
 
   # parse and leave out the path
   parsed <- urltools::url_parse(mirror_full_url)
