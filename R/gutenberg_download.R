@@ -212,10 +212,8 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   links <- xml2::read_xml(wget_url, as_html = TRUE)
   print(links)
   xml2::write_xml(links, "links")
-  cat(readLines("links")[1:50], sep = "\n")
-  a <- rvest::html_nodes(links, "a")
-  print(a)
-  a <- a[[1]]
+  cat(readLines("links"), sep = "\n")
+  a <- xml2::xml_find_one(links, ".//a")
   print(a)
   a <- rvest::html_attr(a, "href")
   print(a)
