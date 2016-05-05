@@ -215,7 +215,7 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   cat(readLines("links"), sep = "\n")
   a <- xml2::xml_find_one(links, ".//a")
   print(a)
-  a <- rvest::html_attr(a, "href")
+  mirror_full_url <- rvest::html_attr(a, "href")
   print(a)
   print(mirror_full_url)
 
