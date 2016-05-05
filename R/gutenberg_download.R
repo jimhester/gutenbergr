@@ -211,6 +211,8 @@ gutenberg_get_mirror <- function(verbose = TRUE) {
   wget_url <- "http://www.gutenberg.org/robot/harvest?filetypes[]=txt"
   links <- xml2::read_xml(wget_url, as_html = TRUE)
   print(links)
+  xml2::write_xml(links, "links")
+  cat(readLines("links")[1:50], sep = "\n")
   mirror_full_url <- links %>%
     rvest::html_nodes("a") %>%
     .[[1]] %>%
